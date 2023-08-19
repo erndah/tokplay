@@ -1,15 +1,16 @@
-   {
-  "version": 2,
-  "builds": [
+{
+    "version": 2,
+    "builds": [
+     {
+     "src": "backend/app.js",
+     "use": "@vercel/node"
+     }
+     ],
+    "routes": [
     {
-      "src": "app.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "destination": "app.js"
-    }
-  ]
-}
+     "src": "/api/(.*)",
+      "dest": "/backend/app.js"
+     }
+    ],
+   "installCommand": "npm install"
+   }
