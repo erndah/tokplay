@@ -13,10 +13,12 @@ exports.getVideoComments = async (req, res) => {
 exports.submitComment = async (req, res) => {
   try {
     const { username, comment } = req.body;
+    const videoId = req.params.videoId;
+    // console.log (videoId)
     const newComment = new Comment({
-      videoId: req.params.videoId, 
+      videoId,
       name: username,
-      comment: comment,
+      comment,
     });
     await newComment.save();
     res.json({ status: 'Success', message: 'Comment submitted successfully.' });
